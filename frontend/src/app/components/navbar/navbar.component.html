@@ -7,8 +7,8 @@
     <img src="/imgs/ford.png" alt="Ford Logo" />
   </div>
   <ul>
-    <li><a routerLink="/home" class="menu-link" (click)="toggleMenu()">Home</a></li>
-    <li><a routerLink="/login" class="menu-link" (click)="toggleMenu()">Login</a></li>
-    <li><a routerLink="/dashboard" class="menu-link" (click)="toggleMenu()">Dashboard</a></li>
-  </ul>
+    <li><a class="text-danger" (click)="navigateAndClose('/login')">logout</a></li>
+    <li><a (click)="navigateAndClose('/home')">Home</a></li>
+    <li><a (click)="navigateAndClose('/dashboard')">Dashboard</a></li>
+  </ul>  
 </nav>

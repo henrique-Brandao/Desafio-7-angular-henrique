@@ -9,11 +9,10 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'login' },
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: '**', redirectTo: 'login' },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

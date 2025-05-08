@@ -9,8 +9,31 @@ main {
     background-image: url("../../../../public/imgs/ranger.png");
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center center;
+    
 }
 
-main {
-    overflow: hidden;
+.modal-welcome {
+    background-color: rgb(240, 239, 239);
+    opacity: 0.9;
+    width: 60%;
+    height: 80%;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.651);
+}
+
+.cabecalho {
+    border-bottom: 2px solid #333;
+    box-shadow: inset;
+}
+
+.titulo-cabecalho {
+    padding: 10px;
+    padding-left: 35px;
+    font-size: 1.2rem;
+}
+
+.paragrafo-modal {
+    padding: 35px;
+    font-size: 2rem;
+    color: #0080ffd7;
 }
