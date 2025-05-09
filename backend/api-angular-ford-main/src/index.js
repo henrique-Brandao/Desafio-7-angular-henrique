@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "..", "public/img")));
+app.use('/img', express.static(path.join(__dirname, "..", "public/imgs")));
 
 app.post("/login", (req, res) => {
     try {
@@ -48,7 +48,7 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 1500,
                 connected: 500,
                 softwareUpdates: 750,
-                img: "http://localhost:30001/img/ranger.png"
+                img: "http://localhost:3001/img/ranger.png"
             },
             {
                 id: 2,
