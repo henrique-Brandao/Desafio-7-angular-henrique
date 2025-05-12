@@ -1,0 +1,90 @@
+<!-- home.component.html (ajustado) -->
+<div class="home-container">
+  <app-menu />
+  
+  <div class="main-content">
+    <div class="header-area">
+      <div class="welcome-section">
+        <img src="img/ford.png" alt="Ford Logo" class="ford-logo">
+        <h1>Bem-vindo ao Portal Ford</h1>
+        
+        <div class="action-buttons">
+          <button class="btn btn-primary btn-lg" (click)="goToDashboard()">
+            <i class="bi bi-speedometer2 me-2"></i>Ir para Dashboard
+          </button>
+          <button (click)="logout()" class="btn btn-outline-danger ms-3">
+            <i class="bi bi-box-arrow-right me-2"></i>Sair
+          </button>
+        </div>
+      </div>
+      
+      <div class="stats-panel">
+        <div class="stat-card">
+          <i class="bi bi-calendar-check"></i>
+          <div class="stat-info">
+            <h4>Agendamentos</h4>
+            <p>12 este mês</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <i class="bi bi-people-fill"></i>
+          <div class="stat-info">
+            <h4>Clientes</h4>
+            <p>852 ativos</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <i class="bi bi-car-front-fill"></i>
+          <div class="stat-info">
+            <h4>Veículos</h4>
+            <p>24 modelos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cars-section">
+      <h2>Conheça nossos modelos</h2>
+      
+      <div class="car-cards">
+        <div class="car-card">
+          <img src="img/ranger.png" alt="Ford Ranger">
+          <div>
+            <h3>Ford Ranger</h3>
+            <p>Potência e robustez para suas aventuras</p>
+          </div>
+        </div>
+        
+        <div class="car-card">
+          <img src="img/territory.png" alt="Ford Maverick">
+          <div>
+            <h3>Ford Territory</h3>
+            <p>Um SUV para quem exige conforto e estilo.</p>
+          </div>
+        </div>
+        
+        <div class="car-card">
+          <img src="img/broncoSport.png" alt="Ford Bronco">
+          <div>
+            <h3>Ford Bronco</h3>
+            <p>Capacidade off-road incomparável</p>
+          </div>
+        </div>
+        
+        <div class="car-card">
+          <img src="img/mustang.png" alt="Ford Mustang">
+          <div>
+            <h3>Ford Mustang</h3>
+            <p>Performance e estilo lendários</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="ford-footer">
+    <p>© 2025 Ford Motor Company Brasil</p>
+  </footer>
+</div>

@@ -1,0 +1,179 @@
+* {
+    overflow: hidden;
+}
+.home-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px 80px;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 1800px; /* Limita a largura máxima para evitar esticamento excessivo */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 60px;
+  width: 100%;
+  gap: 60px; /* Espaço entre as seções */
+}
+
+.welcome-section {
+  width: 45%;
+  text-align: left;
+  min-width: 400px; /* Largura mínima para evitar compressão */
+}
+
+.ford-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.welcome-section h1 {
+  color: #003478; /* Ford blue */
+  font-weight: 600;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.action-buttons {
+  display: flex;
+}
+
+.action-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.stats-panel {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 400px; /* Largura mínima para evitar compressão */
+}
+
+.stat-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px 25px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card i {
+  font-size: 32px;
+  color: #003478;
+  margin-right: 25px;
+  min-width: 32px; /* Largura mínima para o ícone */
+}
+
+.stat-info h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.stat-info p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 16px;
+}
+
+.cars-section {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.cars-section h2 {
+  text-align: center;
+  color: #003478;
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+.car-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas */
+  gap: 30px;
+  width: 100%;
+}
+
+.car-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  height: 270px; /* Altura fixa */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.car-card:hover {
+  transform: translateY(-8px);
+}
+
+.car-card img {
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.car-card h3 {
+  font-weight: 600;
+  color: #003478;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.car-card p {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+.ford-footer {
+  background-color: #003478;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 20px;
+  width: 100%;
+  border-top-left-radius: 1rem;
+border-top-right-radius: 1rem;
+}
+
+/* Estilo específico para o menu */
+:host ::ng-deep .sidebar-toggle {
+  position: fixed !important;
+  top: 20px !important;
+  left: 20px !important;
+  z-index: 1030 !important;
+}
+
+:host ::ng-deep .hamburger-btn {
+  width: 50px !important;
+  height: 50px !important;
+}

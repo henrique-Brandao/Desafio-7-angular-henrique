@@ -1,20 +1,23 @@
-// login.service.ts
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { Usuario } from '../models/user';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:3001/login'; // Corrigido
+  http = inject(HttpClient)
 
-  constructor(private http: HttpClient) {}
-
-  login(nome: string, senha: string) {
-    return this.http.post<{
-      id: number;
-      nome: string;
-      email: string;
-    }>(this.apiUrl, { nome, senha });
+  login(nome: string, senha: string): Observable<Usuario> {
+    return this.http.post<Usuario>("http://localhost:3001/login", { nome, senha })
+      .pipe(
+        tap(
+          (user) => {
+            sessionStorage.setItem("email", user.email)
+          }
+        )
+      )
   }
 }
+

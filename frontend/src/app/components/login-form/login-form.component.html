@@ -1,0 +1,18 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()" class="shadow p-3 rounded-2">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Usuário</label>
+    <input formControlName="nome" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Senha</label>
+    <input formControlName="senha" type="password" class="form-control" id="exampleInputPassword1" required>
+  </div>
+  
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="autoLogin" formControlName="autoLogin">
+    <label class="form-check-label" for="autoLogin">Logar automaticamente</label>
+  </div>
+   
+  <button type="submit" class="btn btn-primary">Entrar</button>
+</form>

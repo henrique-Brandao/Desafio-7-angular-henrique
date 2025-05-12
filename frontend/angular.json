@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "projeto-fordenter-angular": {
+    "angular-class": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/projeto-fordenter-angular",
+            "outputPath": "dist/angular-class",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,15 +27,18 @@
               }
             ],
             "styles": [
-              "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+  "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+  "src/styles.css"
             ],
             "scripts": [
-              "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ]
+            ],
+            "server": "src/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "src/server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -65,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "projeto-fordenter-angular:build:production"
+              "buildTarget": "angular-class:build:production"
             },
             "development": {
-              "buildTarget": "projeto-fordenter-angular:build:development"
+              "buildTarget": "angular-class:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -91,9 +94,9 @@
               }
             ],
             "styles": [
-              "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+  "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+  "src/styles.css"
             ],
             "scripts": []
           }
@@ -102,6 +105,6 @@
     }
   },
   "cli": {
-    "analytics": "4ab19ed7-2f63-49c6-9d5c-88f2dd9914e6"
+    "analytics": "52640c23-14f1-47d8-bce0-010b483c544d"
   }
 }

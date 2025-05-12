@@ -1,27 +1,19 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Veiculo, VinInfos } from '../models/car';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:3001';
+  http = inject(HttpClient)
 
-  getVehicles(): Observable<any[]> {
-    return this.http.get<{ vehicles: any[] }>(`${this.baseUrl}/vehicles`)
-      .pipe(map(res => res.vehicles));
+  getVeiculos(): Observable<Veiculo[]> {
+    return this.http.get<Veiculo[]>("http://localhost:3001/vehicles")
   }
 
-  getVehicleByName(name: string): Observable<any> {
-    return this.getVehicles().pipe(
-      map(vehicles => vehicles.find(v => v.vehicle.toLowerCase().includes(name.toLowerCase())))
-    );
-  }
-
-  getVehicleData(vin: string): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(`${this.baseUrl}/vehicleData`, { vin }, { headers });
+  getVinInfos(vin: string) {
+    return this.http.post<VinInfos>("http://localhost:3001/vehicleData", { vin })
   }
 }

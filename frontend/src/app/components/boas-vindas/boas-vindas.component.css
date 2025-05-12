@@ -1,0 +1,17 @@
+/* boas-vindas.component.css */
+.welcome-container {
+  padding-right: 2rem;
+}
+
+.welcome-heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #343a40;
+}
+
+.welcome-message {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 0;
+}

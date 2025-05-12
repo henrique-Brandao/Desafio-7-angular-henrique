@@ -1,0 +1,56 @@
+
+<nav class="sidebar-toggle">
+  <button class="hamburger-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+    <i class="bi bi-list"></i>
+  </button>
+</nav>
+
+<div class="offcanvas offcanvas-start sidebar-menu" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+  <div class="offcanvas-header">
+    <div class="sidebar-brand">
+      <img src="img/ford.png" alt="Ford Logo" class="sidebar-logo">
+      <h5 class="sidebar-title" id="sidebarMenuLabel">Ford Enter</h5>
+    </div>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  
+  <div class="offcanvas-body p-0">
+    <div class="user-profile">
+      <div class="user-avatar">
+        <i class="bi bi-person-circle"></i>
+      </div>
+      <div class="user-info">
+        <h6 class="user-name">{{ userName }}</h6>
+        <span class="user-role">Administrador</span>
+      </div>
+    </div>
+    
+    <div class="sidebar-divider"></div>
+    
+    <ul class="sidebar-nav">
+      <li class="sidebar-item" [class.active]="currentRoute === '/home'">
+        <a class="sidebar-link" (click)="navigate('/home')">
+          <i class="bi bi-house-door-fill"></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li class="sidebar-item" [class.active]="currentRoute === '/dashboard'">
+        <a class="sidebar-link" (click)="navigate('/dashboard')">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+    </ul>
+    
+    <div class="sidebar-divider"></div>
+    
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-item">
+        <a class="sidebar-link" (click)="logout()">
+          <i class="bi bi-box-arrow-left"></i>
+          <span>Sair</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

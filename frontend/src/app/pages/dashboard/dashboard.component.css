@@ -1,0 +1,167 @@
+:host {
+  display: block;
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Estilização da primeira seção - Cards */
+section {
+  margin-bottom: 30px;
+}
+
+section:first-child {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização do seletor de veículos */
+.shadow {
+  background-color: #f8f9fa;
+  border-radius: 8px !important;
+  transition: transform 0.2s;
+}
+
+.shadow:hover {
+  transform: translateY(-3px);
+}
+
+.shadow h2 {
+  color: #0d6efd;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 1rem;
+  color: #495057;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+select:focus {
+  border-color: #0d6efd;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Estilização da seção de imagem */
+section:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 300px;
+}
+
+section:nth-child(2) img {
+  max-height: 10%;
+  max-width: 10%;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+section:nth-child(2) img:hover {
+  transform: scale(1.05);
+}
+
+/* Estilização da seção da tabela */
+section:nth-child(3) {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-image {
+  max-height: 435px !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  section:first-child {
+    flex-direction: column;
+  }
+  
+  .shadow {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+section {
+  animation: fadeIn 0.5s ease-in-out;
+}
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+.dashboard-container.menu-expanded .dashboard-content {
+  margin-left: 250px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.header h1 {
+  color: #0d6efd;
+  margin: 0;
+  font-weight: 600;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info span {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .dashboard-container.menu-expanded .dashboard-content {
+    margin-left: 0;
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .user-info {
+    margin-top: 10px;
+  }
+}
