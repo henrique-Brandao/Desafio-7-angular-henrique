@@ -11,20 +11,20 @@
       </div>
     </div>
     
-    <section class="d-flex gap-3 justify-content-around rounded-2">
-      <div class="shadow border border-black p-3">
-        <h2>Veículos</h2>
-        <select (change)="onChangeSelect($event)">
-          @for(v of veiculos; track v.id) {
-            <option value="{{ v.id }}">{{ v.vehicle }}</option>
-          }
-        </select>
-      </div>
+<section class="d-flex gap-3 justify-content-around rounded-2">
+  <div class="shadow border border-black p-3">
+    <h2>Veículos</h2>
+    <select (change)="onChangeSelect($event)">
+      @for(v of veiculos; track v.id) {
+        <option value="{{ v.id }}">{{ v.vehicle }}</option>
+      }
+    </select>
+  </div>
 
-      <app-card [titulo]="'Total de Vendas'" [valor]="veiculoSelecionado.volumetotal" />
-      <app-card [titulo]="'Conectados'" [valor]="veiculoSelecionado.connected"/>
-      <app-card [titulo]="'Upd. Software'" [valor]="veiculoSelecionado.softwareUpdates"/>
-    </section>
+  <app-card [titulo]="'Total de Vendas'" [valor]="veiculoSelecionado.volumetotal"></app-card>
+  <app-card [titulo]="'Conectados'" [valor]="veiculoSelecionado.connected"></app-card>
+  <app-card [titulo]="'Upd. Software'" [valor]="veiculoSelecionado.softwareUpdates"></app-card>
+</section>
     
     <section>
       <img src="{{ veiculoSelecionado.img }}" class="vehicle-image">

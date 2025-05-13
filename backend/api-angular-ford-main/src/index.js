@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
-const cors = require("cors")
+const cors = require("cors");
+const { status } = require("express/lib/response");
 
 const app = express();
 
@@ -8,7 +9,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/img', express.static(path.join(__dirname, "..", "public/imgs")));
+app.use('/img', express.static(path.join(__dirname, "..", "public/img")));
 
 app.post("/login", (req, res) => {
     try {
@@ -48,7 +49,8 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 1500,
                 connected: 500,
                 softwareUpdates: 750,
-                img: "http://localhost:3001/img/ranger.png"
+                img: "http://localhost:3001/img/ranger.png",
+                vin: "2FRHDUYS2Y63NHD22454"
             },
             {
                 id: 2,
@@ -56,7 +58,8 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 1500,
                 connected: 500,
                 softwareUpdates: 750,
-                img: "http://localhost:3001/img/mustang.png"
+                img: "http://localhost:3001/img/mustang.png",
+                vin: "2RFAASOYS4E4HDU34875"
             },
             {
                 id: 3,
@@ -64,7 +67,8 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 1500,
                 connected: 500,
                 softwareUpdates: 750,
-                img: "http://localhost:3001/img/territory.png"
+                img: "http://localhost:3001/img/territory.png",
+                vin: "2FHSVCS4E4HDU27562"
             },
             {
                 id: 4,
@@ -72,7 +76,8 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 1500,
                 connected: 500,
                 softwareUpdates: 750,
-                img: "http://localhost:3001/img/broncoSport.png"
+                img: "http://localhost:3001/img/broncoSport.png",
+                vin: "2CHVVJGYS6E4HDR33455"
             }
         ];
 
@@ -99,17 +104,37 @@ app.post("/vehicleData", (req, res) => {
                     lat: -12.2322,
                     long: -35.2314
                 });
-            
+
             case "2RFAASOYS4E4HDU34875":
                 return res.status(200).json({
                     id: 2,
                     odometro: 10000,
-                    nivelCombustivel: 90,
+                    nivelCombustivel: 70,
                     status: "on",
                     lat: -12.2322,
                     long: -35.2314
                 });
-        
+
+            case "2FHSVCS4E4HDU27562":
+                return res.status(200).json({
+                    id: 3,
+                    odometro: 43000,
+                    nivelCombustivel: 90,
+                    status: "on",
+                    lat: -12.2322,
+                    long: -35.2314
+                })
+
+            case "2CHVVJGYS6E4HDR33455":
+                return res.status(200).json({
+                    id: 4,
+                    odometro: 3000,
+                    nivelCombustivel: 40,
+                    status: "on",
+                    lat: -12.2322,
+                    long: -35.2314
+                });
+
             default:
                 return res.status(400).json({
                     message: "Código VIN utilizado não foi encontrado!"
