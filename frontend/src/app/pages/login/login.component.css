@@ -1,31 +1,36 @@
-/* login.component.css */
-.login-container {
-  overflow: hidden;
-  background-color: #f8f9fa;
+.pagina {
+  background-color: #f8f9fa; 
 }
 
-.car-column {
-  position: relative;
-  background-color: #fff;
+.imagem-container {
+  background-color: #f8f9fa;
+  justify-content: center;
+  align-items: center; 
+  opacity: 40%;
+}
+
+/* Inputs estilizados */
+.form-control {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  border-color: #198754 !important; 
+}
+
+.form-check-input {
+  margin-top: 0.2em;
 }
 
 .ford-logo {
-  width: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+  max-width: 150px;
+  margin-top: -60px;
+  margin-bottom: 2.5rem; /* ou ajuste conforme o espaçamento desejado */
 }
 
-.car-image {
-  max-width: 90%;
-  max-height: 70vh;
-}
-
-.form-column {
-  padding: 2rem;
-}
-
-.welcome-text {
-  font-size: 1.5rem;
-  font-weight: 500;
+#logar-auto {
+  width: 2.5rem;
+  height: 1.5rem;
 }

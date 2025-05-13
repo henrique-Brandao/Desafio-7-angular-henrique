@@ -6,6 +6,7 @@ import { Veiculo, VinInfos } from '../../models/car';
 import { MenuComponent } from '../../components/menu/menu.component';
 import { MenuService } from '../../services/menu.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,9 +16,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
+  [x: string]: any;
   dashboardService = inject(DashboardService);
   menuService = inject(MenuService);
-
+  router = inject(Router);
   menuExpanded = false;
   veiculos: Veiculo[] = [];
   veiculoSelecionado: Veiculo = { id: -1, connected: 0, volumetotal: 0, softwareUpdates: 0, vehicle: "", img: "", vin: "" };
@@ -25,7 +27,7 @@ export class DashboardComponent implements OnInit {
   vinInfos: VinInfos = { id: -1, lat: 0, long: 0, nivelCombustivel: 0, odometro: 0, status: "" };
 
   ngOnInit() {
-    // Inscrever-se no estado do menu
+  
     this.menuService.menuExpanded$.subscribe(expanded => {
       this.menuExpanded = expanded;
     });
@@ -46,6 +48,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  
+
   onChangeSelect(event: Event) {
     const id = Number((event.target as HTMLSelectElement).value);
     const veiculo = this.veiculos.find((veiculo) => veiculo.id === id);
@@ -62,7 +66,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  onChangeVin() {
-    // Implementação futura
+  logout() {
+    sessionStorage.clear();
+    this.router.navigate([""]);
   }
-}
+} 
