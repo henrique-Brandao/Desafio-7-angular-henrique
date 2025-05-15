@@ -9,7 +9,7 @@
   opacity: 40%;
 }
 
-/* Inputs estilizados */
+
 .form-control {
   background: transparent !important;
   border-radius: 0 !important;
@@ -27,7 +27,7 @@
 .ford-logo {
   max-width: 150px;
   margin-top: -60px;
-  margin-bottom: 2.5rem; /* ou ajuste conforme o espaçamento desejado */
+  margin-bottom: 2.5rem; 
 }
 
 #logar-auto {

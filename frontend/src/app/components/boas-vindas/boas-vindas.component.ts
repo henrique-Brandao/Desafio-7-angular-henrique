@@ -1,4 +1,3 @@
-// boas-vindas.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +13,6 @@ export class BoasVindasComponent implements OnInit {
   welcomeMessage: string = '';
   
   ngOnInit() {
-    // Você pode obter o nome do usuário do sessionStorage ou de um serviço
     const storedUser = sessionStorage.getItem('user');
     if (storedUser) {
       try {
@@ -25,7 +23,6 @@ export class BoasVindasComponent implements OnInit {
       }
     }
     
-    // Mensagem dinâmica baseada na hora do dia
     const hour = new Date().getHours();
     if (hour < 12) {
       this.welcomeMessage = 'Tenha um excelente dia!';

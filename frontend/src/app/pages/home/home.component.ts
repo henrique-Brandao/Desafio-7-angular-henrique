@@ -1,4 +1,3 @@
-// home.component.ts (sem inicialização via código)
 import { Component, inject } from '@angular/core';
 import { MenuComponent } from "../../components/menu/menu.component";
 import { Router } from '@angular/router';

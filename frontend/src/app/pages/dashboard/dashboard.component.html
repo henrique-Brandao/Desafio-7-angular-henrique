@@ -1,44 +1,77 @@
 <div class="dashboard-container" [ngClass]="{'menu-expanded': menuExpanded}">
-    <app-menu></app-menu>
-  <!-- Integração do Menu Component -->
+  <app-menu></app-menu>
   
   <div class="dashboard-content">
     <div class="header">
-      <h1>Dashboard Ford</h1>
-      <div class="user-info">
-        <span>Bem-vindo, Admin</span>
-        <button class="btn btn-outline-danger btn-sm" (click)="logout()">Logout</button>
+      <div class="d-flex justify-content-between align-items-center w-100 flex-wrap">
+        <h1 class="mb-2 mb-sm-0">Dashboard</h1>
+        <div class="user-info">
+          <span class="d-none d-sm-inline me-2">Bem-vindo, admin</span>
+          <button class="btn btn-outline-danger btn-sm" (click)="logout()">Logout</button>
+        </div>
       </div>
     </div>
     
-<section class="d-flex gap-3 justify-content-around rounded-2">
-  <div class="shadow border border-black p-3">
-    <h2>Veículos</h2>
-    <select (change)="onChangeSelect($event)">
-      @for(v of veiculos; track v.id) {
-        <option value="{{ v.id }}">{{ v.vehicle }}</option>
-      }
-    </select>
-  </div>
+    <section class="row g-2 g-md-3 mb-3 mb-md-4">
+      <div class="col-12 col-md-4 mb-3 mb-md-0">
+        <div class="shadow border p-2 p-md-3 h-100">
+          <h2>Veículos</h2>
+          <select class="form-select" (change)="onChangeSelect($event)">
+            <option selected disabled>Selecione um veiculo</option>
+            @for(v of veiculos; track v.id) {
+              <option value="{{ v.id }}">{{ v.vehicle }}</option>
+            }
+          </select>
+        </div>
+      </div>
 
-  <app-card [titulo]="'Total de Vendas'" [valor]="veiculoSelecionado.volumetotal"></app-card>
-  <app-card [titulo]="'Conectados'" [valor]="veiculoSelecionado.connected"></app-card>
-  <app-card [titulo]="'Upd. Software'" [valor]="veiculoSelecionado.softwareUpdates"></app-card>
-</section>
-    
-    <section>
-      <img src="{{ veiculoSelecionado.img }}" class="vehicle-image">
+      <!-- Cards responsivos -->
+      @if (veiculoSelecionado) {
+        <div class="col-12 col-md-8">
+          <div class="row g-2 g-md-3">
+            <div class="col-12 col-sm-4 mb-2 mb-sm-0">
+              <app-card [titulo]="'Total de Vendas'" [valor]="veiculoSelecionado.volumetotal"></app-card>
+            </div>
+            <div class="col-12 col-sm-4 mb-2 mb-sm-0">
+              <app-card [titulo]="'Conectados'" [valor]="veiculoSelecionado.connected"></app-card>
+            </div>
+            <div class="col-12 col-sm-4">
+              <app-card [titulo]="'Upd. Software'" [valor]="veiculoSelecionado.softwareUpdates"></app-card>
+            </div>
+          </div>
+        </div>
+      } @else {
+        <div class="col-12 col-md-8">
+          <div class="shadow p-2 p-md-3 h-100 d-flex align-items-center justify-content-center">
+            <p class="mb-0">Selecione um veículo para ver os dados</p>
+          </div>
+        </div>
+      }
     </section>
     
-    <section>
-      <app-car-table 
-        [vin]="veiculoSelecionado.vin"
-        [lat]="vinInfos.lat"
-        [long]="vinInfos.long"
-        [nivelCombustivel]="vinInfos.nivelCombustivel"
-        [odometro]="vinInfos.odometro"
-        [status]="vinInfos.status"
-      />
-    </section>
+
+    @if (veiculoSelecionado) {
+      <section class="mb-3 mb-md-4">
+        <div class="vehicle-image-container">
+          <img src="{{ veiculoSelecionado.img }}" class="vehicle-image img-fluid w-100">
+        </div>
+      </section>
+    }
+    
+
+    @if (veiculoSelecionado && vinInfos) {
+      <section>
+        <div class="table-responsive">
+          <app-car-table 
+            [vin]="veiculoSelecionado.vin"
+            [lat]="vinInfos.lat"
+            [long]="vinInfos.long"
+            [nivelCombustivel]="vinInfos.nivelCombustivel"
+            [odometro]="vinInfos.odometro"
+            [status]="vinInfos.status"
+          />
+        </div>
+      </section>
+    }
   </div>
 </div>

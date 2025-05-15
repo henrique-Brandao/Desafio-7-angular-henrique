@@ -28,42 +28,53 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   
-    this.menuService.menuExpanded$.subscribe(expanded => {
-      this.menuExpanded = expanded;
-    });
-    
-    this.dashboardService.getVeiculos().subscribe({
-      error: () => {},
-      next: (veiculos) => {
-        this.veiculos = Object.values(veiculos) as Veiculo[];
-        this.veiculoSelecionado = veiculos[0];
-
-        this.dashboardService.getVinInfos(this.veiculoSelecionado.vin).subscribe({
-          error: () => {},
-          next: (vinInfos) => {
-            this.vinInfos = vinInfos;
-          }
-        });
-      }
-    });
-  }
-
+  this.menuService.menuExpanded$.subscribe(expanded => {
+    this.menuExpanded = expanded;
+  });
   
-
-  onChangeSelect(event: Event) {
-    const id = Number((event.target as HTMLSelectElement).value);
-    const veiculo = this.veiculos.find((veiculo) => veiculo.id === id);
-
-    if(veiculo) {
-      this.veiculoSelecionado = veiculo;
+  this.dashboardService.getVeiculos().subscribe({
+    error: () => {},
+    next: (veiculos) => {
+      this.veiculos = Object.values(veiculos) as Veiculo[];
     }
+  });
+}
 
-    this.dashboardService.getVinInfos(this.veiculoSelecionado.vin).subscribe({
+  // No seu dashboard.component.ts
+selecionarVeiculo(veiculo: Veiculo) {
+  this.veiculoSelecionado = veiculo;
+
+  this.dashboardService.getVinInfos(veiculo.vin).subscribe({
+    error: () => {},
+    next: (vinInfos) => {
+      this.vinInfos = vinInfos;
+    }
+  });
+  
+}
+
+
+
+onChangeSelect(event: any) {
+  const veiculoId = event.target.value;
+  // Encontrar o veículo pelo ID
+  const veiculoSelecionado = this.veiculos.find(v => v.id.toString() === veiculoId);
+  
+  if (veiculoSelecionado) {
+    this.veiculoSelecionado = veiculoSelecionado;
+    
+    // Buscar as informações do VIN
+    this.dashboardService.getVinInfos(veiculoSelecionado.vin).subscribe({
       error: () => {},
       next: (vinInfos) => {
         this.vinInfos = vinInfos;
       }
     });
+  }
+}
+
+toggleMenu() {
+    this.menuExpanded = !this.menuExpanded;
   }
 
   logout() {

@@ -13,13 +13,11 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   canActivate(): boolean | UrlTree {
-    // Verifica diretamente no localStorage (igual ao backend)
     const usuario = localStorage.getItem('usuarioFord');
     
-    if (usuario) { // Se existir usuário salvo
+    if (usuario) {
       return true;
     } else {
-      // Redireciona para o login com a URL de origem
       return this.router.createUrlTree(['/login']);
     }
   }

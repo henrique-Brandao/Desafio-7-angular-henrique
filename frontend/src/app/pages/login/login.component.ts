@@ -1,10 +1,9 @@
-
-// login.component.ts
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -36,7 +35,6 @@ export class LoginComponent {
       next: (res) => {
         this.isLoading = false;
 
-        // Salvando dados no localStorage
         localStorage.setItem('usuarioFord', JSON.stringify(res));
 
         this.successMessage = 'Login realizado com sucesso!';

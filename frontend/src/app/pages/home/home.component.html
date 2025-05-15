@@ -1,25 +1,27 @@
-<!-- home.component.html (ajustado) -->
 <div class="home-container">
   <app-menu />
   
-  <div class="main-content">
-    <div class="header-area">
-      <div class="welcome-section">
-        <img src="img/ford.png" alt="Ford Logo" class="ford-logo">
-        <h1>Bem-vindo ao Portal Ford</h1>
+  <div class="main-content container-fluid">
+
+    <div class="header-area row">
+
+      <div class="welcome-section col-12 col-lg-5 mb-4 mb-lg-0">
+        <img src="img/ford.png" alt="Ford Logo" class="ford-logo img-fluid">
+        <h1 class="display-4">Bem-vindo ao Portal Ford</h1>
         
         <div class="action-buttons">
-          <button class="btn btn-primary btn-lg" (click)="goToDashboard()">
+          <button class="btn btn-primary btn-lg me-2" (click)="goToDashboard()">
             <i class="bi bi-speedometer2 me-2"></i>Ir para Dashboard
           </button>
-          <button (click)="logout()" class="btn btn-outline-danger ms-3">
+          <button (click)="logout()" class="btn btn-outline-danger">
             <i class="bi bi-box-arrow-right me-2"></i>Sair
           </button>
         </div>
       </div>
       
-      <div class="stats-panel">
-        <div class="stat-card">
+
+      <div class="stats-panel col-12 col-lg-6 offset-lg-1">
+        <div class="stat-card mb-3">
           <i class="bi bi-calendar-check"></i>
           <div class="stat-info">
             <h4>Agendamentos</h4>
@@ -27,7 +29,7 @@
           </div>
         </div>
         
-        <div class="stat-card">
+        <div class="stat-card mb-3">
           <i class="bi bi-people-fill"></i>
           <div class="stat-info">
             <h4>Clientes</h4>
@@ -46,45 +48,53 @@
     </div>
     
     <div class="cars-section">
-      <h2>Conheça nossos modelos</h2>
+      <h2 class="text-center mb-4">Conheça nossos modelos</h2>
       
-      <div class="car-cards">
-        <div class="car-card">
-          <img src="img/ranger.png" alt="Ford Ranger">
-          <div>
-            <h3>Ford Ranger</h3>
-            <p>Potência e robustez para suas aventuras</p>
+      <div class="car-cards row">
+        <div class="col-12 col-sm-6 col-lg-3 mb-4">
+          <div class="car-card h-100">
+            <img src="img/ranger.png" alt="Ford Ranger" class="img-fluid">
+            <div>
+              <h3>Ford Ranger</h3>
+              <p>Potência e robustez para suas aventuras</p>
+            </div>
           </div>
         </div>
         
-        <div class="car-card">
-          <img src="img/territory.png" alt="Ford Maverick">
-          <div>
-            <h3>Ford Territory</h3>
-            <p>Um SUV para quem exige conforto e estilo</p>
+        <div class="col-12 col-sm-6 col-lg-3 mb-4">
+          <div class="car-card h-100">
+            <img src="img/territory.png" alt="Ford Territory" class="img-fluid">
+            <div>
+              <h3>Ford Territory</h3>
+              <p>Um SUV para quem exige conforto e estilo</p>
+            </div>
           </div>
         </div>
         
-        <div class="car-card">
-          <img src="img/broncoSport.png" alt="Ford Bronco">
-          <div>
-            <h3>Ford Bronco</h3>
-            <p>Capacidade off-road incomparável</p>
+        <div class="col-12 col-sm-6 col-lg-3 mb-4">
+          <div class="car-card h-100">
+            <img src="img/broncoSport.png" alt="Ford Bronco" class="img-fluid">
+            <div>
+              <h3>Ford Bronco</h3>
+              <p>Capacidade off-road incomparável</p>
+            </div>
           </div>
         </div>
         
-        <div class="car-card">
-          <img src="img/mustang.png" alt="Ford Mustang">
-          <div>
-            <h3>Ford Mustang</h3>
-            <p>Performance e estilo lendários</p>
+        <div class="col-12 col-sm-6 col-lg-3 mb-4">
+          <div class="car-card h-100">
+            <img src="img/mustang.png" alt="Ford Mustang" class="img-fluid">
+            <div>
+              <h3>Ford Mustang</h3>
+              <p>Performance e estilo lendários</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   
-  <footer class="ford-footer">
-    <p>© 2025 Ford Motor Company Brasil</p>
+  <footer class="ford-footer mt-auto">
+    <p class="mb-0">© 2025 Ford Motor Company Brasil</p>
   </footer>
 </div>

@@ -1,4 +1,3 @@
-// menu.component.ts
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -17,14 +16,12 @@ export class MenuComponent implements OnInit {
   userName: string = 'Usuário';
   
   ngOnInit() {
-    // Monitorar rotas para marcar o item ativo no menu
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
       this.currentRoute = event.url;
     });
     
-    // Obter nome do usuário da sessão
     const storedUser = sessionStorage.getItem('user');
     if (storedUser) {
       try {
@@ -35,13 +32,11 @@ export class MenuComponent implements OnInit {
       }
     }
     
-    // Inicializar a rota atual
     this.currentRoute = this.router.url;
   }
 
   navigate(route: string) {
     this.router.navigate([route]);
-    // Fechar o menu em telas menores
     if (window.innerWidth < 992) {
       const offcanvasElement = document.getElementById('sidebarMenu');
       if (offcanvasElement) {

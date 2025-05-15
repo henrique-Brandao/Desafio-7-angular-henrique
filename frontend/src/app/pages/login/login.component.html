@@ -1,17 +1,13 @@
-<!-- Mantenha suas classes de estilo originais -->
 <div class="pagina d-flex min-vh-100">
-  <!-- Seção da Imagem -->
   <div class="imagem-container d-none d-lg-flex col-lg-6 p-0">
       <img src="img/ranger.png" alt="Ford Ranger" class="img-fluid w-50-">
   </div>
 
-  <!-- Seção do Formulário -->
   <div class="formulario-container col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center p-5">
       <img src="img/ford.png" alt="Ford Logo" class="mb-4 ford-logo" style="max-width: 150px; margin-top: -60px;">
 
       <h2 class="text-success fw-bold mb-4">Boas-vindas</h2>
 
-      <!-- Formulário ajustado -->
       <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
           <div class="mb-3 d-flex justify-content-center align-items-center">
               <i class="bi bi-person p-1"></i>
@@ -20,7 +16,7 @@
                   [(ngModel)]="username"
                   required
                   type="text"
-                  placeholder="Usuário (admin)"
+                  placeholder="Usuário"
                   class="form-control border-0 border-bottom rounded-0 py-2 px-0"
                   [class.is-invalid]="errorMessage">
           </div>
@@ -32,12 +28,11 @@
                   [(ngModel)]="password"
                   required 
                   type="password"
-                  placeholder="Senha (123456)"
+                  placeholder="Senha"
                   class="form-control border-0 border-bottom rounded-0 py-2 px-0"
                   [class.is-invalid]="errorMessage">
           </div>
 
-          <!-- Mensagens de feedback -->
           <div *ngIf="errorMessage" class="alert alert-danger mb-3">
               {{ errorMessage }}
           </div>

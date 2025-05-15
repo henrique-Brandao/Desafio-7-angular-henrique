@@ -11,4 +11,6 @@ import { CommonModule } from '@angular/common';
 export class CardComponent {
   @Input() titulo: string = ""
   @Input() valor: number = 0
+
+  
 }
