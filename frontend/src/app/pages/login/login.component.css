@@ -1,36 +1,171 @@
-.pagina {
-  background-color: #f8f9fa; 
-}
-
-.imagem-container {
-  background-color: #f8f9fa;
+.login-page-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center; 
-  opacity: 40%;
+  min-height: 100vh;
+  padding: 20px; 
+  position: relative;
+  overflow: hidden;
 }
 
 
-.form-control {
-  background: transparent !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+.login-page-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../../public/img/F150.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.3; /* controla a transparência da imagem */
+  z-index: -1; /* coloca atrás do conteúdo */
 }
 
-.form-control:focus {
-  border-color: #198754 !important; 
-}
-
-.form-check-input {
-  margin-top: 0.2em;
-}
-
-.ford-logo {
+.ford-logo-top {
   max-width: 150px;
-  margin-top: -60px;
-  margin-bottom: 2.5rem; 
+  margin-bottom: 35px;
 }
 
-#logar-auto {
-  width: 2.5rem;
-  height: 1.5rem;
+.login-card {
+  background-color: #ffffff;
+  padding: 40px 45px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 500px; 
+  text-align: center;
+  border: 1px solid #e0e0e0;
+}
+
+.login-title {
+  font-size: 1.1rem; 
+  font-weight: 600;
+  color: #00003E; 
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.password-group {
+  position: relative;
+}
+
+.form-control-login {
+  width: 100%;
+  padding: 10px 14px; 
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 0.95rem; 
+  background-color: #fff !important;
+  box-shadow: none !important;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-control-login::placeholder {
+  color: #6c757d;
+}
+
+.form-control-login:focus {
+  border-color: #00003E;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 62, 0.15);
+}
+
+.form-control-login.is-invalid {
+  border-color: #dc3545;
+}
+
+.password-icon {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  color: #6c757d;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.forgot-password-link {
+  display: block;
+  text-align: right;
+  margin-top: -10px;
+  margin-bottom: 22px;
+  font-size: 0.85rem; 
+  color: #00003E;
+  text-decoration: none;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+.btn-login {
+  background-color: #00003E;
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px; 
+  width: 100%;
+  border-radius: 20px;
+  font-size: 0.95rem; 
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn-login:hover {
+  background-color: #00002A;
+}
+
+.btn-login:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.no-account-text {
+  margin-top: 25px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.btn-create-account {
+  background-color: #ffffff;
+  color: #00003E;
+  border: 1px solid #00003E;
+  padding: 9px 15px; 
+  width: 100%;
+  border-radius: 20px;
+  font-size: 0.95rem; 
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-create-account:hover {
+  background-color: #f0f2f5; 
+}
+
+.alert {
+  font-size: 0.9rem;
+  padding: 10px 15px;
+  margin-top: 15px;
+  margin-bottom: 10px; 
+}
+
+.btn-login .spinner-border {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em; 
 }

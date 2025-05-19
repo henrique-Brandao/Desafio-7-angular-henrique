@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../services/login.service'; 
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule], 
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -19,37 +18,71 @@ export class LoginComponent {
   errorMessage = '';
   successMessage = '';
 
+  showPassword = false;
+
   constructor(
     private loginService: LoginService,
     private router: Router
   ) {}
 
-  onSubmit(form: NgForm) {
-    if (!form.valid) return;
+ 
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  
+  onSubmit(form: NgForm): void {
+    
+    if (!form.valid) {
+      Object.keys(form.controls).forEach(field => {
+        const control = form.controls[field];
+        control.markAsTouched({ onlySelf: true });
+      });
+      this.errorMessage = "Por favor, preencha todos os campos obrigatórios."; 
+      this.successMessage = ''; 
+      return; 
+    }
 
     this.isLoading = true;
     this.errorMessage = '';
     this.successMessage = '';
 
+
     this.loginService.login(this.username, this.password).subscribe({
       next: (res) => {
         this.isLoading = false;
-
-        localStorage.setItem('usuarioFord', JSON.stringify(res));
-
-        this.successMessage = 'Login realizado com sucesso!';
+        localStorage.setItem('usuarioFord', JSON.stringify(res)); 
+        this.successMessage = 'Login realizado com sucesso! Redirecionando...';
         setTimeout(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home']); 
         }, 1000);
       },
       error: (err) => {
         this.isLoading = false;
         if (err.status === 401) {
           this.errorMessage = 'Usuário ou senha incorretos.';
-        } else {
-          this.errorMessage = 'Erro ao tentar fazer login.';
+        } else if (err.error && typeof err.error === 'string' && err.error.includes("User not found")) {
+            this.errorMessage = 'Usuário não encontrado.';
+        } else if (err.error && err.error.message) {
+            this.errorMessage = err.error.message;
+        }
+        else {
+          this.errorMessage = 'Erro ao tentar fazer login. Verifique suas credenciais ou tente novamente mais tarde.';
         }
       }
     });
+  }
+
+  // Funções de navegação
+  navigateToForgotPassword(): void {
+    // Exemplo: this.router.navigate(['/forgot-password']);
+    console.log('Navegar para esqueceu a senha'); // Placeholder - Implemente a navegação real
+    // this.router.navigate(['/auth/forgot-password']); // Exemplo de rota
+  }
+
+  navigateToRegister(): void {
+    // Exemplo: this.router.navigate(['/register']);
+    console.log('Navegar para criar conta'); // Placeholder - Implemente a navegação real
+    // this.router.navigate(['/auth/register']); // Exemplo de rota
   }
 }
