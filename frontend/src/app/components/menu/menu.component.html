@@ -40,7 +40,16 @@
           <span>Dashboard</span>
         </a>
       </li>
+
+      <li class="sidebar-item" [class.active]="currentRoute === '/contato'">
+    <a class="sidebar-link" (click)="navigate('/contato')">
+      <i class="bi bi-envelope-fill"></i>
+      <span>Contato</span>
+    </a>
+  </li>
     </ul>
+
+
     
     <div class="sidebar-divider"></div>
     

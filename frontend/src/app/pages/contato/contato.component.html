@@ -1,0 +1,118 @@
+
+
+<main class="principal">
+    <div class="principal__container">
+      <app-menu/> 
+    <h2 class="principal__container__subtitulo">Sobre Você</h2>
+    
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="principal__container__formulario">
+      <input 
+        type="text" 
+        formControlName="nome" 
+        placeholder="Nome*" 
+        id="nome" 
+        class="fordform" 
+        [ngClass]="getFieldClass('nome')">
+      <span class="mensagem-erro" *ngIf="formulario.get('nome')?.invalid && (formulario.get('nome')?.touched || formulario.get('nome')?.dirty)">
+        {{ getErrorMessage('nome') }}
+      </span>
+      
+      <input 
+        type="text" 
+        formControlName="email" 
+        placeholder="E-mail*" 
+        id="email" 
+        class="fordform"
+        [ngClass]="getFieldClass('email')">
+      <span class="mensagem-erro" *ngIf="formulario.get('email')?.invalid && (formulario.get('email')?.touched || formulario.get('email')?.dirty)">
+        {{ getErrorMessage('email') }}
+      </span>
+      
+      <input 
+        type="text" 
+        formControlName="cpf" 
+        placeholder="CPF*" 
+        id="cpf" 
+        class="fordform" 
+        autocomplete="off"
+        [ngClass]="getFieldClass('cpf')"
+        (input)="formatarCPF($event)">
+      <span class="mensagem-erro" *ngIf="formulario.get('cpf')?.invalid && (formulario.get('cpf')?.touched || formulario.get('cpf')?.dirty)">
+        {{ getErrorMessage('cpf') }}
+      </span>
+      
+      <input 
+        type="text" 
+        formControlName="sobrenome" 
+        placeholder="Sobrenome*" 
+        id="sobrenome" 
+        class="fordform"
+        [ngClass]="getFieldClass('sobrenome')">
+      <span class="mensagem-erro" *ngIf="formulario.get('sobrenome')?.invalid && (formulario.get('sobrenome')?.touched || formulario.get('sobrenome')?.dirty)">
+        {{ getErrorMessage('sobrenome') }}
+      </span>
+      
+      <input 
+        type="text" 
+        formControlName="telefone" 
+        placeholder="Telefone*" 
+        id="telefone" 
+        class="fordform"
+        [ngClass]="getFieldClass('telefone')"
+        (input)="formatarTelefone($event)">
+      <span class="mensagem-erro" *ngIf="formulario.get('telefone')?.invalid && (formulario.get('telefone')?.touched || formulario.get('telefone')?.dirty)">
+        {{ getErrorMessage('telefone') }}
+      </span>
+      
+      <select 
+        formControlName="contato" 
+        id="contato" 
+        class="fordform"
+        [ngClass]="getFieldClass('contato')">
+        <option value="" disabled selected>Como deseja ser contatado</option>
+        <option value="telefone">telefone</option>
+        <option value="email">e-mail</option>
+      </select>
+      <span class="mensagem-erro" *ngIf="formulario.get('contato')?.invalid && (formulario.get('contato')?.touched || formulario.get('contato')?.dirty)">
+        {{ getErrorMessage('contato') }}
+      </span>
+      <textarea 
+  placeholder="Gostaria de acrescentar algo?" 
+  id="mensagem" 
+  class="fordform mensagem-area"
+  rows="4"></textarea>
+      
+      <p class="paragrafoTermosCondicoes">
+        Os dados serão mantidos em nossa base de dados, só enquanto for desejado por você. 
+        A qualquer momento, será possível editar ou remover tais dados. 
+        <a href="https://www.ford.com.br/politica-de-privacidade/" target="_blank">Termos e Condições</a>
+      </p><br>
+
+      <div class="divInput">
+        <label>
+          <input 
+            type="checkbox" 
+            formControlName="termosCondicoes" 
+            (change)="onTermosChange($event)"> 
+          Sim. Li e concordo com os Termos e Condições
+        </label>
+      </div><br>
+      
+      <div class="divInput">
+        <label>
+          <input type="checkbox" formControlName="receberNovidades"> 
+          Sim. Também quero receber descontos e novidades.
+        </label>
+      </div>
+      
+      <button 
+        type="submit" 
+        [disabled]="!termosAceitos"
+        [ngClass]="termosAceitos ? 'botaoAtivado' : 'botaoDesativado'">
+        Enviar
+      </button>
+    </form>
+    
+    <img src="img/ford-logo.svg" class="p-3">
+  </div>
+</main>

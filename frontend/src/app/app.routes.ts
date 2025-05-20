@@ -28,4 +28,14 @@ export const routes: Routes = [
                 .then(c => c.DashboardComponent)
         }
     },
+    {
+        path: "contato",
+        pathMatch: "full",
+        canActivate: [loginGuard],
+        loadComponent: () => {
+            return import("./pages/contato/contato.component")
+                .then(c => c.ContatoComponent)
+        }
+    }
+
 ];
