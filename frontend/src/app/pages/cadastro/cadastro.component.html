@@ -1,0 +1,82 @@
+<div class="cadastro-page-container">
+  <img src="img/ford-logo.svg" alt="Ford Logo" class="ford-logo-top">
+
+  <div class="cadastro-card">
+    <h2 class="cadastro-title">CRIAR CONTA</h2>
+
+    <form (ngSubmit)="onSubmit(cadastroForm)" #cadastroForm="ngForm" novalidate>
+      <div class="form-group">
+        <input
+            name="username"
+            [(ngModel)]="username"
+            required
+            type="email"
+            placeholder="E-mail (será seu usuário)"
+            class="form-control-cadastro"
+            [class.is-invalid]="(cadastroForm.submitted && cadastroForm.controls['username']?.invalid) || (cadastroForm.controls['username']?.touched && cadastroForm.controls['username']?.invalid)"
+            aria-label="Endereço de e-mail para cadastro">
+        <div *ngIf="(cadastroForm.submitted || cadastroForm.controls['username']?.touched) && cadastroForm.controls['username']?.errors?.['required']" class="invalid-feedback d-block text-start ps-1">
+          E-mail é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+            name="password"
+            [(ngModel)]="password"
+            required
+            minlength="3" 
+            type="password"
+            placeholder="Senha (mínimo 3 caracteres)"
+            class="form-control-cadastro"
+            [class.is-invalid]="(cadastroForm.submitted && cadastroForm.controls['password']?.invalid) || (cadastroForm.controls['password']?.touched && cadastroForm.controls['password']?.invalid)"
+            aria-label="Senha para cadastro">
+        <div *ngIf="(cadastroForm.submitted || cadastroForm.controls['password']?.touched) && cadastroForm.controls['password']?.errors?.['required']" class="invalid-feedback d-block text-start ps-1">
+          Senha é obrigatória.
+        </div>
+        <div *ngIf="cadastroForm.controls['password']?.errors?.['minlength'] && cadastroForm.controls['password']?.touched" class="invalid-feedback d-block text-start ps-1">
+          A senha deve ter no mínimo 3 caracteres.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+            name="confirmPassword"
+            [(ngModel)]="confirmPassword"
+            required
+            type="password"
+            placeholder="Confirmar Senha"
+            class="form-control-cadastro"
+            [class.is-invalid]="(cadastroForm.submitted && cadastroForm.controls['confirmPassword']?.invalid) || (cadastroForm.controls['confirmPassword']?.touched && cadastroForm.controls['confirmPassword']?.invalid) || (password !== confirmPassword && cadastroForm.controls['confirmPassword']?.touched)"
+            aria-label="Confirmação de senha">
+        <div *ngIf="(cadastroForm.submitted || cadastroForm.controls['confirmPassword']?.touched) && cadastroForm.controls['confirmPassword']?.errors?.['required']" class="invalid-feedback d-block text-start ps-1">
+          Confirmação de senha é obrigatória.
+        </div>
+        <div *ngIf="password !== confirmPassword && cadastroForm.controls['confirmPassword']?.touched && !cadastroForm.controls['confirmPassword']?.errors?.['required']" class="invalid-feedback d-block text-start ps-1">
+          As senhas não coincidem.
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage && (cadastroForm.submitted || !cadastroForm.dirty)" class="alert alert-danger mt-3">
+          {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage" class="alert alert-success mt-3">
+          {{ successMessage }}
+      </div>
+
+      <button
+          type="submit"
+          class="btn btn-cadastro-action"
+          [disabled]="isLoading">
+          <span *ngIf="!isLoading">Criar Conta</span>
+          <span *ngIf="isLoading">
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              PROCESSANDO...
+          </span>
+      </button>
+    </form>
+
+    <p class="account-text">Já tem uma conta?</p>
+    <button type="button" class="btn btn-link-login" (click)="navigateToLogin()">Fazer Login</button>
+  </div>
+</div>

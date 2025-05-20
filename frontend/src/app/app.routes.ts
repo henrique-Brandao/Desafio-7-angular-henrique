@@ -11,6 +11,14 @@ export const routes: Routes = [
         }
     },
     {
+        path: "cadastro",
+        pathMatch: "full",
+        loadComponent: () => {
+            return import("./pages/cadastro/cadastro.component")
+                .then(c => c.CadastroComponent)
+        }
+    },
+    {
         path: "home",
         pathMatch: "full",
         canActivate: [loginGuard],
@@ -37,5 +45,6 @@ export const routes: Routes = [
                 .then(c => c.ContatoComponent)
         }
     }
+
 
 ];

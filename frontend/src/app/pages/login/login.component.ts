@@ -73,16 +73,9 @@ export class LoginComponent {
     });
   }
 
-  // Funções de navegação
-  navigateToForgotPassword(): void {
-    // Exemplo: this.router.navigate(['/forgot-password']);
-    console.log('Navegar para esqueceu a senha'); // Placeholder - Implemente a navegação real
-    // this.router.navigate(['/auth/forgot-password']); // Exemplo de rota
-  }
-
   navigateToRegister(): void {
-    // Exemplo: this.router.navigate(['/register']);
-    console.log('Navegar para criar conta'); // Placeholder - Implemente a navegação real
-    // this.router.navigate(['/auth/register']); // Exemplo de rota
+    this.router.navigate(['/cadastro']);
+    console.log('Navegar para criar conta'); 
+    
   }
 }
