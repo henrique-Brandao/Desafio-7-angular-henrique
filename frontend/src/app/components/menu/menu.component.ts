@@ -1,38 +1,53 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators'; 
 import { CommonModule } from '@angular/common';
+import { Subject } from 'rxjs'; 
 
 @Component({
   selector: 'app-menu',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css'
+  styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy {
   router = inject(Router);
   currentRoute: string = '';
   userName: string = 'Usuário';
-  
+
+  private destroy$ = new Subject<void>();
+
   ngOnInit() {
     this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
+      filter(event => event instanceof NavigationEnd),
+      takeUntil(this.destroy$)
     ).subscribe((event: any) => {
       this.currentRoute = event.url;
     });
-    
-    const storedUser = sessionStorage.getItem('user');
-    if (storedUser) {
+
+    this.currentRoute = this.router.url;
+    this.loadUserName();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  loadUserName(): void {
+    const storedUserString = localStorage.getItem('usuarioFord');
+    if (storedUserString) {
       try {
-        const user = JSON.parse(storedUser);
+        const user = JSON.parse(storedUserString);
         this.userName = user.nome || 'Usuário';
       } catch (e) {
-        console.error('Erro ao obter dados do usuário', e);
+        console.error('Erro ao obter dados do usuário do localStorage:', e);
+        this.userName = 'Usuário';
       }
+    } else {
+      this.userName = 'Usuário';
     }
-    
-    this.currentRoute = this.router.url;
   }
 
   navigate(route: string) {
@@ -40,20 +55,26 @@ export class MenuComponent implements OnInit {
     if (window.innerWidth < 992) {
       const offcanvasElement = document.getElementById('sidebarMenu');
       if (offcanvasElement) {
-        const closeButton = offcanvasElement.querySelector('.btn-close');
-        if (closeButton) {
-          (closeButton as HTMLElement).click();
+        const bootstrapOffcanvas = (window as any).bootstrap?.Offcanvas?.getInstance(offcanvasElement);
+        if (bootstrapOffcanvas) {
+          bootstrapOffcanvas.hide();
+        } else {
+          const closeButton = offcanvasElement.querySelector('.btn-close');
+          if (closeButton) {
+            (closeButton as HTMLElement).click();
+          }
         }
       }
     }
   }
-  
+
   goToDashboard() {
     this.navigate('/dashboard');
   }
-  
+
   logout() {
-    sessionStorage.clear();
+    localStorage.removeItem('usuarioFord');
+    this.userName = 'Usuário';
     this.router.navigate(['']);
   }
 }

@@ -5,11 +5,15 @@ export const routes: Routes = [
     {
         path: "",
         pathMatch: "full",
+        redirectTo: "login"
+    },
+    {
+        path: "login", 
+        pathMatch: "full",
         loadComponent: () => {
             return import("./pages/login/login.component")
                 .then(c => c.LoginComponent)
-        }
-    },
+        }},
     {
         path: "cadastro",
         pathMatch: "full",

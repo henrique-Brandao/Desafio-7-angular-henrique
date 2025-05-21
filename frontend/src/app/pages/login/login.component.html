@@ -13,7 +13,7 @@
             type="email"
             placeholder="E-mail"
             class="form-control-login"
-            [class.is-invalid]="(loginForm.submitted && loginForm.controls['username']?.invalid) || (loginForm.controls['username']?.touched && loginForm.controls['username']?.invalid)"
+           [class.is-invalid]="(loginForm.submitted && loginForm.controls['username']?.invalid) || (loginForm.controls['username']?.touched && loginForm.controls['username']?.invalid)"
             aria-label="Endereço de e-mail">
         <div *ngIf="(loginForm.submitted || loginForm.controls['username']?.touched) && loginForm.controls['username']?.errors?.['required']" class="invalid-feedback d-block text-start ps-1">
           E-mail é obrigatório.
@@ -44,10 +44,10 @@
         </div>
       </div>
 
-      <!-- MODIFICADO: Chamando o método navigateToForgotPassword() -->
+    
       <a (click)="navigateToForgotPassword()" (keydown.enter)="navigateToForgotPassword()" class="forgot-password-link" role="link" tabindex="0">Esqueceu a senha?</a>
 
-      <!-- Mensagens de erro/sucesso globais -->
+      
       <div *ngIf="errorMessage && (loginForm.submitted || !loginForm.dirty)" class="alert alert-danger mt-3">
           {{ errorMessage }}
       </div>
@@ -68,7 +68,7 @@
     </form>
 
     <p class="no-account-text">Não tem uma conta?</p>
-    <!-- MODIFICADO: Chamando o método navigateToRegister() -->
+   
     <button type="button" class="btn btn-create-account" (click)="navigateToRegister()">Criar conta</button>
   </div>
 </div>

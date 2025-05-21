@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
   router = inject(Router);
-
+  userName: string = 'Usuário';
   goToDashboard() {
     this.router.navigate(["/dashboard"]);
   }

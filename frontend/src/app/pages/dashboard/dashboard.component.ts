@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   });
 }
 
-  // No seu dashboard.component.ts
+
 selecionarVeiculo(veiculo: Veiculo) {
   this.veiculoSelecionado = veiculo;
 
@@ -57,13 +57,12 @@ selecionarVeiculo(veiculo: Veiculo) {
 
 onChangeSelect(event: any) {
   const veiculoId = event.target.value;
-  // Encontrar o veículo pelo ID
   const veiculoSelecionado = this.veiculos.find(v => v.id.toString() === veiculoId);
   
   if (veiculoSelecionado) {
     this.veiculoSelecionado = veiculoSelecionado;
     
-    // Buscar as informações do VIN
+
     this.dashboardService.getVinInfos(veiculoSelecionado.vin).subscribe({
       error: () => {},
       next: (vinInfos) => {

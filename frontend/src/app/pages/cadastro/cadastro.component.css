@@ -9,7 +9,7 @@
 }
 
 .cadastro-page-container::before {
-   content: "";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -19,11 +19,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.3; /* controla a transparência da imagem */
-  z-index: -1; /* coloca atrás do conteúdo */
+  opacity: 0.3;
+  z-index: -1;
 }
+
 .ford-logo-top {
-  max-width: 150px; /* Ajuste conforme necessário */
+  max-width: 150px;
   margin-bottom: 30px;
 }
 
@@ -33,20 +34,20 @@
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 450px; /* Ajuste conforme necessário */
+  max-width: 450px;
   text-align: center;
 }
 
 .cadastro-title {
   font-size: 24px;
   font-weight: bold;
-  color: #00095B; /* Cor da Ford ou do seu projeto */
+  color: #00095B;
   margin-bottom: 25px;
 }
 
 .form-group {
   margin-bottom: 20px;
-  text-align: left; /* Alinha labels e inputs à esquerda dentro do form-group */
+  text-align: left;
 }
 
 .form-control-cadastro {
@@ -69,7 +70,7 @@
 }
 
 .btn-cadastro-action {
-  background-color: #00095B; /* Cor principal do botão */
+  background-color: #00095B;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -79,11 +80,11 @@
   cursor: pointer;
   width: 100%;
   transition: background-color 0.3s ease;
-  margin-top: 10px; /* Espaço antes do botão */
+  margin-top: 10px;
 }
 
 .btn-cadastro-action:hover {
-  background-color: #00074A; /* Cor mais escura no hover */
+  background-color: #00074A;
 }
 
 .btn-cadastro-action:disabled {
@@ -100,7 +101,7 @@
 
 .btn-link-login {
   background-color: transparent;
-  color: #00095B; /* Cor do link */
+  color: #00095B;
   border: none;
   padding: 0;
   font-size: 14px;

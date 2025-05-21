@@ -22,8 +22,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.3; /* controla a transparência da imagem */
-  z-index: -1; /* coloca atrás do conteúdo */
+  opacity: 0.3; 
+  z-index: -1;
 }
 
 .ford-logo-top {

@@ -113,16 +113,16 @@ export class ContatoComponent implements OnInit {
  validarTelefone(control: FormControl): {[key: string]: any} | null {
   const numeroLimpo = control.value?.replace(/\D/g, '') || '';
   
-  // Verifica se tem 11 dígitos
+  
   if (numeroLimpo.length !== 11) {
     return { telefoneInvalido: true };
   }
   
-  // Extrai o DDD e o primeiro dígito do número
+  
   const ddd = numeroLimpo.substring(0, 2);
   const primeiroDígito = numeroLimpo.substring(2, 3);
   
-  // Lista de DDDs válidos no Brasil
+  
   const dddsValidos = [
     // São Paulo
     '11', '12', '13', '14', '15', '16', '17', '18', '19',

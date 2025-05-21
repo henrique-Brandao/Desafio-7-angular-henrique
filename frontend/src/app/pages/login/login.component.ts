@@ -32,50 +32,51 @@ export class LoginComponent {
 
   
   onSubmit(form: NgForm): void {
-    
     if (!form.valid) {
       Object.keys(form.controls).forEach(field => {
         const control = form.controls[field];
         control.markAsTouched({ onlySelf: true });
       });
-      this.errorMessage = "Por favor, preencha todos os campos obrigatórios."; 
-      this.successMessage = ''; 
-      return; 
+      this.errorMessage = "Por favor, preencha todos os campos obrigatórios.";
+      this.successMessage = '';
+      return;
     }
 
     this.isLoading = true;
     this.errorMessage = '';
     this.successMessage = '';
 
+    
 
     this.loginService.login(this.username, this.password).subscribe({
       next: (res) => {
         this.isLoading = false;
-        localStorage.setItem('usuarioFord', JSON.stringify(res)); 
         this.successMessage = 'Login realizado com sucesso! Redirecionando...';
         setTimeout(() => {
-          this.router.navigate(['/home']); 
+          this.router.navigate(['/home']);
         }, 1000);
       },
       error: (err) => {
         this.isLoading = false;
-        if (err.status === 401) {
-          this.errorMessage = 'Usuário ou senha incorretos.';
-        } else if (err.error && typeof err.error === 'string' && err.error.includes("User not found")) {
-            this.errorMessage = 'Usuário não encontrado.';
-        } else if (err.error && err.error.message) {
+        if (err.error && err.error.message) { 
             this.errorMessage = err.error.message;
+        } else if (err.status === 401) {
+          this.errorMessage = 'E-mail ou senha incorretos.';
         }
-        else {
-          this.errorMessage = 'Erro ao tentar fazer login. Verifique suas credenciais ou tente novamente mais tarde.';
+        else { 
+          this.errorMessage = 'Erro ao tentar fazer login. Verifique a conexão ou tente novamente mais tarde.';
         }
+        console.error("Erro no login do componente:", err); 
       }
     });
   }
 
+
+public navigateToForgotPassword(): void {
+  console.log('Navegar para esqueceu a senha - AINDA NÃO IMPLEMENTADO');
+}
+
   navigateToRegister(): void {
     this.router.navigate(['/cadastro']);
-    console.log('Navegar para criar conta'); 
-    
   }
 }
